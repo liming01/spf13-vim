@@ -200,6 +200,11 @@ sync_repo       "$HOME/.vim/autoload" \
                 "master" \
                 "vim-plug"
 
+if program_exists "nvim"; then
+	mkdir -p "$target_path/.local/share/nvim/site/"
+	lnif "$HOME/.vim/autoload"  "$target_path/.local/share/nvim/site/"
+fi
+
 setup_vim_plug    "$APP_PATH/.vimrc.bundles.default"
 
 msg             "\nPlease run pip3 install --upgrade neovim to enjoy deoplete - asynchronous keyword completion system"
